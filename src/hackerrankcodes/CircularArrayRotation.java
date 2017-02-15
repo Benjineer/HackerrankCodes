@@ -19,15 +19,29 @@ public class CircularArrayRotation {
         int k = in.nextInt();
         int q = in.nextInt();
         int[] a = new int[n];
+
         for (int a_i = 0; a_i < n; a_i++) {
             a[a_i] = in.nextInt();
         }
 
-        for (int a0 = 0; a0 < q; a0++) {
-            int m = in.nextInt();
+        int c = 0;
+        for (int i = 0; i < k; i++) {
+            c = a[n - 1];
+            for (int j = n - 1; j > 0; j--) {
+
+                a[j] = a[j - 1];
+            }
+            a[0] = c;
+
         }
 
-        
+        for (int a0 = 0; a0 < q; a0++) {
+            int index = in.nextInt();
+            int ans = a[index];
+            System.out.println(ans);
+
+        }
+
     }
 
 }
