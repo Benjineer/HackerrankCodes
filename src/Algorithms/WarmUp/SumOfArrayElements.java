@@ -15,7 +15,7 @@ public class SumOfArrayElements {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+
         int arraySize = 6;
 //        arraySize = in.nextInt();
         String arrayElements = "1 2 3 4 10 11";
