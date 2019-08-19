@@ -1,51 +1,36 @@
 package Java;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
 
 public class Anagrams {
 
     static boolean isAnagram(String a, String b) {
         // Complete the function
-        if(a.length() != b.length()){
+
+        if (a.length() != b.length()) {
             return false;
         }
-        if(a.equalsIgnoreCase(b)){
+        if (a.equalsIgnoreCase(b)) {
             return true;
         }
 
-        HashMap<Character, Integer> map = new HashMap<>();
-        char[] aa = a.toCharArray();
-        char[] ba = b.toCharArray();
-        for (int i = 0; i < aa.length; i++) {
-            if(map.get(aa[i]) == null){
-                map.put(aa[i], 1);
-            }else {
-                Integer integer = map.get(aa[i]);
-                map.put(aa[i], ++integer);
+        char[] aChars = a.toLowerCase().toCharArray();
+        char[] bChars = b.toLowerCase().toCharArray();
+
+        for (int i = 0; i < aChars.length; i++) {
+            for (int j = 0; j < bChars.length; j++) {
+                if(aChars[i] == bChars[j]){
+                    bChars[j] = ' ';
+                    break;
+                }
             }
         }
 
-        for (int i = 0; i < ba.length; i++) {
-            if(map.get(ba[i]) == null){
-                map.put(ba[i], 1);
-            }else {
-                Integer integer = map.get(ba[i]);
-                map.put(ba[i], --integer);
-            }
+        if(String.valueOf(bChars).trim().isEmpty()){
+            return true;
         }
 
-        Set<Map.Entry<Character, Integer>> entries = map.entrySet();
-
-        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
-            if(entry.getValue() != 0){
-                return false;
-            }
-        }
-
-        return true;
+        return false;
     }
 
     public static void main(String[] args) {
